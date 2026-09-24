@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FSCSS Demo Project — 2026</title>
+
+  <!-- FSCSS Runtime (auto-compiles .fscss and style blocks) -->
+  <script src="https://cdn.jsdelivr.net/npm/fscss@1.2.4/runtime.min.js" defer></script>
+
+  <!-- Link external FSCSS file -->
+  <link type="text/fscss" href="styles.fscss">
+</head>
+<body>
+  <header class="hero">
+    <h1>FSCSS Demo</h1>
+    <p class="tagline">Figured Shorthand Cascading Style Sheets in action (2026)</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>What is FSCSS?</h2>
+      <p>
+        A lightweight CSS preprocessor that adds shorthand syntax, variables,
+        reusable blocks, arrays, and even natural-language <code>pattern()</code> matching.
+        It compiles to plain CSS.
+      </p>
+      <button class="btn primary">Primary Button</button>
+      <button class="btn secondary">Secondary Button</button>
+    </section>
+
+    <section class="card featured">
+      <h2>Features Showcase</h2>
+      <ul class="feature-list">
+        <li>Variables & design tokens</li>
+        <li>@define mixins</li>
+        <li>Semantic pattern() matching</li>
+        <li>Arrays & @random()</li>
+        <li>Zero-runtime production builds via CLI</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Color Palette (from @arr)</h2>
+      <div class="swatches">
+        <div class="swatch" data-color="1"></div>
+        <div class="swatch" data-color="2"></div>
+        <div class="swatch" data-color="3"></div>
+        <div class="swatch" data-color="4"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built with FSCSS v1.2.4 · Demo project</p>
+  </footer>
+</body>
+</html>
