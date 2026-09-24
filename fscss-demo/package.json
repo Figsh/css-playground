@@ -1,0 +1,14 @@
+{
+  "name": "fscss-demo",
+  "version": "1.0.0",
+  "description": "Simple demo project using FSCSS (Figured Shorthand Cascading Style Sheets) v1.2.4",
+  "scripts": {
+    "build": "npx fscss styles.fscss styles.css",
+    "start": "npx serve ."
+  },
+  "keywords": ["fscss", "css", "preprocessor", "demo"],
+  "license": "MIT",
+  "devDependencies": {
+    "fscss": "^1.2.4"
+  }
+}
