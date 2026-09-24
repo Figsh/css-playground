@@ -1,0 +1,214 @@
+/* ============================================
+FSCSS Demo Stylesheet (styles.fscss)
+Demonstrates variables, @fun, @define, arrays,
+and common shorthand patterns.
+============================================ */
+
+/* --- Design tokens / variables --- */
+$primary: #2563eb;
+$secondary: #7c3aed;
+$accent: #06b6d4;
+$bg: #0f172a;
+$card-bg: #1e293b;
+$text: #f1f5f9;
+$muted: #94a3b8;
+$radius: 12px;
+$shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+
+/* --- Reusable value store --- */
+@fun(tokens) {
+space-sm: 0.5rem;
+space-md: 1rem;
+space-lg: 2rem;
+font-base: 1rem;
+font-lg: 1.25rem;
+}
+
+/* --- Color array for swatches / random use --- */
+@arr colors[#2563eb, #7c3aed, #06b6d4, #10b981]
+
+/* --- Reusable mixin with @define --- */
+@define flex-center() {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+@define card-base() {
+background: $card-bg!;
+border-radius: $radius!;
+box-shadow: $shadow!;
+padding: @fun.tokens.space-lg.value; /* fixed */
+color: $text!;
+}
+
+/* --- Base / reset --- */
+* {
+box-sizing: border-box;
+%2(margin, 
+padding[: 0;]) 
+}
+
+body {
+font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+background: $bg!;
+color: $text!;
+line-height: 1.6;
+min-height: 100vh;
+}
+
+/* --- Hero --- */
+.hero {
+text-align: center;
+padding: 3rem 1.5rem 2rem;
+background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.hero h1 {
+font-size: 2.75rem;
+font-weight: 800;
+letter-spacing: -0.03em;
+margin-bottom: 0.5rem;
+background: linear-gradient(90deg, $primary!, $secondary!, $accent!);
+-*-background-clip: text;
+color: transparent;
+}
+
+.tagline {
+color: $muted;
+font-size: 1.1rem;
+}
+
+/* --- Layout --- */
+.container {
+max-width: 960px;
+margin: 0 auto;
+padding: 2rem 1.5rem;
+display: grid;
+gap: 1.5rem;
+}
+
+/* --- Cards --- */
+.card {
+@card-base()
+border: 1px solid rgba(255, 255, 255, 0.06);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+transform: translateY(-4px);
+box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.card h2 {
+font-size: 1.35rem;
+margin-bottom: 0.75rem;
+color: $accent!;
+}
+
+.card p {
+color: $muted;
+margin-bottom: 1.25rem;
+}
+
+.card.featured {
+border-color: rgba(37, 99, 235, 0.35);
+background: linear-gradient(145deg, #1e293b, #172554);
+}
+
+/* --- Buttons --- */
+.btn {
+display: inline-block;
+padding: 0.65rem 1.4rem;
+border-radius: 8px;
+font-weight: 600;
+font-size: 0.95rem;
+border: none;
+cursor: pointer;
+transition: all 0.2s ease;
+margin-right: 0.6rem;
+margin-bottom: 0.4rem;
+}
+
+.btn.primary {
+background: $primary!;
+color: white;
+}
+
+.btn.primary:hover {
+background: #1d4ed8;
+transform: scale(1.03);
+}
+
+.btn.secondary {
+background: transparent;
+color: $text;
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn.secondary:hover {
+background: rgba(255, 255, 255, 0.08);
+border-color: $secondary!;
+}
+
+/* --- Feature list --- */
+.feature-list {
+list-style: none;
+padding-left: 0;
+}
+
+.feature-list li {
+padding: 0.45rem 0;
+padding-left: 1.6rem;
+position: relative;
+color: $muted;
+}
+
+.feature-list li::before {
+content: "✓";
+position: absolute;
+left: 0;
+color: $accent;
+font-weight: bold;
+}
+
+/* --- Color swatches --- */
+.swatches {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+margin-top: 0.5rem;
+}
+
+.swatch {
+%2(
+width,
+height[: 64px;])
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.swatch[data-color="@arr.colors[]"]{
+background: @arr.colors[];
+}
+
+/* --- Footer --- */
+footer {
+text-align: center;
+padding: 2rem 1rem;
+color: $muted;
+font-size: 0.9rem;
+border-top: 1px solid rgba(255, 255, 255, 0.05);
+margin-top: 2rem;
+}
+
+/* --- Responsive tweak --- */
+@media (max-width: 600px) {
+.hero h1 {
+font-size: 2rem;
+}
+.container {
+padding: 1.25rem 1rem;
+}
+}
